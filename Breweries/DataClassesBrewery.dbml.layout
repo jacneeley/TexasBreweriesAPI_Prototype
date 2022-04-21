@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClassesBrewery">
+  <DataContextMoniker Name="/DataClassesBreweryDataContext" />
+  <nestedChildShapes>
+    <classShape Id="54668da0-a4ec-44a2-9fed-dd7d886ac067" absoluteBounds="2.5, 1.5, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/DataClassesBreweryDataContext/BrewTexa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="955f49d4-c06f-445b-a208-9cc8be742b5f" absoluteBounds="2.515, 1.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

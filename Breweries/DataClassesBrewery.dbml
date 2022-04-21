@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BreweriesTexas" Class="DataClassesBreweryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BreweriesTexas.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BreweriesTexasConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BrewTexas" Member="BrewTexas">
+    <Type Name="BrewTexa">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="brewery_type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address_2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address_3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="county_province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="postal_code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="longitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="latitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="website_url" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="updated_at" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="created_at" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
