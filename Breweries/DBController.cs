@@ -48,6 +48,5 @@ namespace Breweries
             gv.DataSource = selectBreweries;
             gv.DataBind();
         }
-
     }
 }

@@ -15,10 +15,17 @@
             height: 85vh;
             width: 85vh;
         }
+        .auto-style1 {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <h3>Brew Map</h3>
+    <form id="form1" runat="server">
+        <p>
+            <asp:Button ID="Button1" runat="server" PostBackUrl="~/WebForm1.aspx" Text="Return" />
+        </p>
     <div id='map'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiamFjbmVlbGV5IiwiYSI6ImNsMmpwbWRyYTA2bDgzZW8zZnRmbGo0ZGIifQ.hRiBH4zifZodxJFPQrQ1_g';
@@ -35,7 +42,6 @@ container: 'map',
 
 map.addControl(directions, 'top-left');
 </script>
-    <form id="form1" runat="server">
         <div>
         </div>
     </form>

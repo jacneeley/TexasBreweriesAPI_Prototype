@@ -28,11 +28,9 @@ namespace Breweries
             //time variables
             DateTime dt = DateTime.Now;
             DateTime recordedTime;
-           // DateTime collectionTime = DateTime.Now.AddDays(1); //collection time at 12am
-            int timeDiff = DateTime.Compare(dt,DateTime.Now);
-            //timeDiff = 1
+            int timeDiff = DateTime.Compare(DateTime.Now,dt);
             while (timeDiff < 0)
-            {//we will only collect new data if t1 is earlier than t2
+            {
                 GetBreweryData();
                 break;
             }
@@ -58,14 +56,22 @@ namespace Breweries
 
             // Add an Accept header for JSON format.
             client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
+            new MediaTypeWithQualityHeaderValue("application/json")); //tells the server to send data in JSON format
 
             // List data response.
             HttpResponseMessage response = client.GetAsync(urlParameters).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            //GetAsync method sends the request, when the method returns, it returns and HTTPResponseMessage, which contains HTTP Response
             if (response.IsSuccessStatusCode)
             {
                 // Parse the response body.
-                var dataObjects = response.Content.ReadAsAsync<IEnumerable<Brew>>().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
+                var dataObjects = response.Content.ReadAsAsync<IEnumerable<Brew>>().Result;  //deserialize JSON
+                //content will get and set response message
+                //ReadAsAsync will deserialize JSON data to a Brew instance 
+                //IEnumerable is important as it is an interface that will define one method. We will be able to dataObject in a foreach loop
+                //Gives us access to a collection
+                //.Result will get result of TASK<TResult>, in this case IEnumerable BREW. Result sets value removing the need for "await"
+          
+
 
                 //Delete existing data from table to avoid duplicates 
                 //Everytime we run getbrewdata method, old data will be removed. Insures old data and new data will be added.
@@ -125,5 +131,11 @@ namespace Breweries
             //implement drop box
             DBController.brewType(GridView1,DropDownList1.Text);
         }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            //nothing
+        }
+
     }
 }
