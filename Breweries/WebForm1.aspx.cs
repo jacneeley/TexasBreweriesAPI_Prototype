@@ -29,8 +29,8 @@ namespace Breweries
             DateTime dt = DateTime.Now;
             DateTime recordedTime;
             int timeDiff = DateTime.Compare(DateTime.Now,dt);
-            while (timeDiff < 0)
-            {
+            while (timeDiff > 0)
+            {//idea is to only collect when d1 > d2
                 GetBreweryData();
                 break;
             }
