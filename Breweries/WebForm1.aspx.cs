@@ -8,13 +8,15 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Breweries
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
         DataClassesBreweryDataContext myDc = new DataClassesBreweryDataContext();
-
+       
+        
         protected void Page_Load(object sender, EventArgs e)
         {
           
@@ -23,26 +25,34 @@ namespace Breweries
 
         public void ScheduleGettingData()
         {
-            //maybe implement scheduling here
-         //   Task.Factory.StartNew(() => {
-         //       System.Threading.Thread.Sleep(2*60*1000);
-                GetBreweryData(TextBox1.Text);
-         //   });
+            //time variables
+            DateTime dt = DateTime.Now;
+            DateTime recordedTime;
+           // DateTime collectionTime = DateTime.Now.AddDays(1); //collection time at 12am
+            int timeDiff = DateTime.Compare(dt,DateTime.Now);
+            //timeDiff = 1
+            while (timeDiff < 0)
+            {//we will only collect new data if t1 is earlier than t2
+                GetBreweryData();
+                break;
+            }
+            recordedTime = dt;
+            var selectBreweries = from aBrew in myDc.BrewTexas
+
+                                  select aBrew;
+
+            GridView1.DataSource = selectBreweries;
+            GridView1.DataBind();
 
 
-            
         }
-
-
-
-        public void GetBreweryData(string pState)
+        public void GetBreweryData()
         {
-            
-
          const string URL = "https://api.openbrewerydb.org/breweries";
          
-
-         string urlParameters = "?by_state=" + pState;
+            //Get JSON data from API
+         string urlParameters = "?by_state=texas";
+            //Create instance of new HTTP CLIENT 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(URL);
 
@@ -58,11 +68,11 @@ namespace Breweries
                 var dataObjects = response.Content.ReadAsAsync<IEnumerable<Brew>>().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
 
                 //Delete existing data from table to avoid duplicates 
-                myDc.ExecuteCommand("Delete From BrewTexas");
+                //Everytime we run getbrewdata method, old data will be removed. Insures old data and new data will be added.
+                myDc.ExecuteCommand("Delete From BrewTexas");//insures that new data will always come in, if there is infact new data, negates the need for any conditional statements
 
                 foreach (var d in dataObjects)
                 {
-
                     //  Console.WriteLine("{0}", d.id);
                     BrewTexa aBrew = new BrewTexa(); 
                     aBrew.id = d.id;
@@ -98,17 +108,22 @@ namespace Breweries
             client.Dispose();
 
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
+            if (TextBox1.Text.Length > 0)
+            {
+                DBController.getBrewCity(GridView1, TextBox1.Text);
 
-            var selectBreweries = from aBrew in myDc.BrewTexas                                
-                                  select aBrew;
-
-            GridView1.DataSource = selectBreweries;
-            GridView1.DataBind();
-
-
+            }
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            DBController.reset(GridView1);
+        }
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            //implement drop box
+            DBController.brewType(GridView1,DropDownList1.Text);
         }
     }
 }

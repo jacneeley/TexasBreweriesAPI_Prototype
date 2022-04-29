@@ -10,9 +10,24 @@
     <form id="form1" runat="server">
         <div>
             <br />
-            Please enter the state
-            <asp:TextBox ID="TextBox1" runat="server">Texas</asp:TextBox>
+            Please enter the City
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:DropDownList ID="DropDownList1" runat="server">
+                <asp:ListItem></asp:ListItem>
+                <asp:ListItem>micro</asp:ListItem>
+                <asp:ListItem>planning</asp:ListItem>
+                <asp:ListItem>large</asp:ListItem>
+            </asp:DropDownList>
             <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Show Breweries By City" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Search By Type" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+            <asp:Button ID="Button2" runat="server" OnClick="Button1_Click" Text="Reset" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button4" runat="server" PostBackUrl="~/MapPage.aspx" Text="BrewMap" />
             <br />
             <br />
             <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
@@ -30,7 +45,6 @@
             </asp:GridView>
             <br />
             <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Show Breweries By State" />
             <br />
             <br />
         </div>

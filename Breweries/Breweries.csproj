@@ -80,7 +80,10 @@
     <Content Include="App_Data\BreweriesTexas_log.ldf">
       <DependentUpon>BreweriesTexas.mdf</DependentUpon>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="MapPage.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +92,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClassesBrewery.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DBController.cs" />
+    <Compile Include="MapPage.aspx.cs">
+      <DependentUpon>MapPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MapPage.aspx.designer.cs">
+      <DependentUpon>MapPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScheduleDaily.cs" />
